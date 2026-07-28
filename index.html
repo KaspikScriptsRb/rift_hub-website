@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Casual Hub | Official Roblox Script Hub</title>
+  <meta name="description" content="Casual Hub - Undetected, fast, and feature-rich Roblox Lua script hub.">
+  <link rel="icon" type="image/png" href="images/Max_a____.png">
+  <link rel="apple-touch-icon" href="images/Max_a____.png">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <div class="scroll-progress-bar" id="scrollProgress"></div>
+  <canvas id="particles-canvas"></canvas>
+
+  <div class="ambient-spotlight spotlight-1" id="spotlight1"></div>
+  <div class="ambient-spotlight spotlight-2" id="spotlight2"></div>
+
+  <header class="header" id="header">
+    <div class="nav-island">
+      <a href="#" class="logo">
+        <div class="logo-icon">
+          <img src="images/Max_a____.png" alt="Casual Hub Logo" class="logo-img">
+        </div>
+        <div class="logo-text">
+          Casual <span class="gradient-text">Hub</span>
+        </div>
+      </a>
+
+      <nav class="nav-menu">
+        <ul class="nav-links">
+          <li><a href="#about" class="nav-link active">About</a></li>
+          <li><a href="#loader" class="nav-link">Script Loader</a></li>
+          <li><a href="#games" class="nav-link">Supported Games</a></li>
+          <li><a href="#executors" class="nav-link">Executors</a></li>
+          <li><a href="#features" class="nav-link">Features</a></li>
+          <li><a href="#how-to-use" class="nav-link">Tutorial</a></li>
+          <li><a href="#team" class="nav-link">Devs</a></li>
+          <li><a href="#pricing" class="nav-link">Pricing</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="https://discord.gg/dUXcJ6aW2B" target="_blank" class="btn btn-discord btn-sm">
+          <i class="fa-brands fa-discord"></i>
+          <span>Discord</span>
+        </a>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation Menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero" id="about">
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="hero-title reveal">
+          Casual Hub - <span class="gradient-text">Roblox Script Hub</span>
+        </h1>
+
+        <p class="hero-description reveal">
+          The ultimate monochrome Roblox Lua script hub. Engineered for peak performance, stealth execution, instant cloud updates, and zero lag across all top games.
+        </p>
+
+        <div class="hero-actions reveal">
+          <a href="#loader" class="btn btn-primary" onclick="document.getElementById('copyScriptBtn').click()">
+            <i class="fa-solid fa-code"></i>
+            <span>Copy Script Loader</span>
+          </a>
+          <a href="https://discord.gg/dUXcJ6aW2B" target="_blank" class="btn btn-discord">
+            <i class="fa-brands fa-discord"></i>
+            <span>Community Discord</span>
+          </a>
+        </div>
+
+        <div class="hero-terminal-wrapper id-anchor" id="loader">
+          <div class="terminal-window glass-panel reveal tilt-card">
+            <div class="terminal-header">
+              <div class="terminal-dots">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+              </div>
+            </div>
+
+            <div class="terminal-body clean-terminal-body">
+              <pre class="code-block"><code><span class="code-function">loadstring</span>(game:<span class="code-function">HttpGet</span>(<span class="code-string">"https://api.jnkie.com/api/v1/luascripts/public/056bf72c3cd7af38ca292db583aaba9ecd12205d214716e14654ee7781bfee23/download"</span>))()</code></pre>
+            </div>
+
+            <div class="terminal-footer clean-terminal-footer">
+              <button class="btn btn-primary btn-full-width" id="copyScriptBtn">
+                <i class="fa-regular fa-copy"></i>
+                <span class="btn-copy-text">Click to copy script</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="games">
+    <div class="container">
+      <div class="editorial-header reveal">
+        <h2 class="editorial-title">Supported Games</h2>
+        <p class="editorial-subtitle">
+          Tailored, highly detailed scripts engineered for top Roblox experiences.
+        </p>
+      </div>
+
+      <div class="games-minimal-grid">
+        <div class="game-minimal-card glass-panel reveal tilt-card copy-module-btn" data-module="Grow a Garden 2">
+          <div class="game-minimal-media">
+            <img src="images/i (9).png" alt="Grow a Garden 2" class="game-minimal-img">
+            <div class="game-minimal-overlay"></div>
+            <div class="game-hover-glow"></div>
+          </div>
+          <div class="game-minimal-info">
+            <h3 class="game-minimal-title">Grow a Garden 2</h3>
+          </div>
+        </div>
+
+        <div class="game-minimal-card glass-panel reveal tilt-card copy-module-btn" data-module="Violence District">
+          <div class="game-minimal-media">
+            <img src="images/i (8).png" alt="Violence District" class="game-minimal-img">
+            <div class="game-minimal-overlay"></div>
+            <div class="game-hover-glow"></div>
+          </div>
+          <div class="game-minimal-info">
+            <h3 class="game-minimal-title">Violence District</h3>
+          </div>
+        </div>
+
+        <div class="game-minimal-card glass-panel reveal tilt-card copy-module-btn" data-module="Notoriety">
+          <div class="game-minimal-media">
+            <img src="images/i 10.png" alt="Notoriety" class="game-minimal-img">
+            <div class="game-minimal-overlay"></div>
+            <div class="game-hover-glow"></div>
+          </div>
+          <div class="game-minimal-info">
+            <h3 class="game-minimal-title">Notoriety</h3>
+          </div>
+        </div>
+
+        <div class="game-minimal-card glass-panel reveal tilt-card copy-module-btn" data-module="Flick">
+          <div class="game-minimal-media">
+            <img src="images/i 11.png" alt="Flick" class="game-minimal-img">
+            <div class="game-minimal-overlay"></div>
+            <div class="game-hover-glow"></div>
+          </div>
+          <div class="game-minimal-info">
+            <h3 class="game-minimal-title">Flick</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="executors">
+    <div class="container">
+      <div class="editorial-header reveal">
+        <h2 class="editorial-title">Tested & Verified Executors</h2>
+        <p class="editorial-subtitle">
+          Casual Hub runs seamlessly across all popular Windows, Android, and iOS Roblox executors.
+        </p>
+      </div>
+
+      <div class="executors-cloud-wrapper glass-panel reveal tilt-card">
+        <div class="executors-cloud-grid">
+          <div class="executor-tag-item"><span>Volt</span></div>
+          <div class="executor-tag-item"><span>Potassium</span></div>
+          <div class="executor-tag-item"><span>Wave</span></div>
+          <div class="executor-tag-item"><span>Synapse Z</span></div>
+          <div class="executor-tag-item"><span>Madium</span></div>
+          <div class="executor-tag-item"><span>Cosmic</span></div>
+          <div class="executor-tag-item"><span>Real</span></div>
+          <div class="executor-tag-item"><span>Velocity</span></div>
+          <div class="executor-tag-item"><span>MacSploit</span></div>
+          <div class="executor-tag-item"><span>Delta</span></div>
+          <div class="executor-tag-item"><span>Arceus X</span></div>
+          <div class="executor-tag-item plus-more"><span>and etc.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="features">
+    <div class="container">
+      <div class="editorial-header reveal">
+        <h2 class="editorial-title">Why Choose Casual Hub</h2>
+        <p class="editorial-subtitle">
+          Engineered to give you an unmatched competitive edge across every supported title.
+        </p>
+      </div>
+
+      <div class="features-bento-container">
+        <div class="feature-bento-item feature-bento-large glass-panel reveal tilt-card">
+          <div class="bento-top-row">
+            <span class="bento-num">01</span>
+          </div>
+          <h3 class="bento-title">Massive Feature Set</h3>
+          <p class="bento-desc">
+            Constantly updated script features built for every supported game.
+          </p>
+        </div>
+
+        <div class="feature-bento-item glass-panel reveal tilt-card">
+          <div class="bento-top-row">
+            <span class="bento-num">02</span>
+          </div>
+          <h3 class="bento-title">Full Optimization</h3>
+          <p class="bento-desc">
+            Optimized for high FPS and stable performance on any PC.
+          </p>
+        </div>
+
+        <div class="feature-bento-item glass-panel reveal tilt-card">
+          <div class="bento-top-row">
+            <span class="bento-num">03</span>
+          </div>
+          <h3 class="bento-title">Frequent & Major Updates</h3>
+          <p class="bento-desc">
+            Fast updates deployed whenever Roblox titles release patches.
+          </p>
+        </div>
+
+        <div class="feature-bento-item glass-panel reveal tilt-card">
+          <div class="bento-top-row">
+            <span class="bento-num">04</span>
+          </div>
+          <h3 class="bento-title">Dedicated Server Support</h3>
+          <p class="bento-desc">
+            Get direct help and request features on our Discord server.
+          </p>
+        </div>
+
+        <div class="feature-bento-item glass-panel reveal tilt-card">
+          <div class="bento-top-row">
+            <span class="bento-num">05</span>
+          </div>
+          <h3 class="bento-title">Custom UI Interface</h3>
+          <p class="bento-desc">
+            Casual Hub features its own custom-built in-game script interface.
+          </p>
+        </div>
+
+        <div class="feature-bento-item feature-bento-large glass-panel reveal tilt-card">
+          <div class="bento-top-row">
+            <span class="bento-num">06</span>
+          </div>
+          <h3 class="bento-title">Free & Premium Options</h3>
+          <p class="bento-desc">
+            Use the script for free via key links or upgrade to Premium Key.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how-to-use">
+    <div class="container">
+      <div class="editorial-header reveal">
+        <h2 class="editorial-title">How To Execute</h2>
+        <p class="editorial-subtitle">
+          Follow these 3 simple steps to execute Casual Hub in your game.
+        </p>
+      </div>
+
+      <div class="pipeline-wrapper reveal">
+        <div class="steps-grid">
+          <div class="step-card glass-panel tilt-card">
+            <div class="step-top-header">
+              <div class="step-num-pill">
+                <span class="num">01</span>
+              </div>
+            </div>
+            <h3 class="step-title">Copy Script Loader</h3>
+            <p class="step-desc">
+              Click to copy the official loader script directly from our terminal.
+            </p>
+            <div class="step-action-row">
+              <button class="btn btn-primary btn-sm" id="step1CopyBtn">
+                <i class="fa-regular fa-copy"></i> Click to copy script
+              </button>
+            </div>
+          </div>
+
+          <div class="step-card glass-panel tilt-card">
+            <div class="step-top-header">
+              <div class="step-num-pill">
+                <span class="num">02</span>
+              </div>
+            </div>
+            <h3 class="step-title">Inject & Execute</h3>
+            <p class="step-desc">
+              Paste the script into your executor and press Inject. Once in-game, press Execute.
+            </p>
+          </div>
+
+          <div class="step-card glass-panel tilt-card">
+            <div class="step-top-header">
+              <div class="step-num-pill">
+                <span class="num">03</span>
+              </div>
+            </div>
+            <h3 class="step-title">Get Access Key</h3>
+            <p class="step-desc">
+              If you do not have a Premium Key, follow the link steps to get a free key. If you own a Premium Key, enter it once for permanent keyless & ad-free access.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="team">
+    <div class="container">
+      <div class="editorial-header reveal">
+        <h2 class="editorial-title">Meet The Creators</h2>
+        <p class="editorial-subtitle">
+          The team responsible for building, updating, and maintaining Casual Hub.
+        </p>
+      </div>
+
+      <div class="team-grid">
+        <div class="team-card glass-panel reveal tilt-card">
+          <div class="team-avatar-frame">
+            <img src="images/8483b78d2a650de6a64dd61900a75a3d.png" alt="Killert Avatar" class="team-avatar" onerror="this.src='https://cdn.discordapp.com/embed/avatars/0.png'">
+            <div class="team-online-badge"></div>
+          </div>
+          <div class="team-role-pill">Casual Hub Founder & Owner</div>
+          <h3 class="team-name">Killert</h3>
+          <p class="team-bio">
+            Founder and owner of Casual Hub
+          </p>
+          <a href="https://discord.gg/dUXcJ6aW2B" target="_blank" class="btn btn-discord btn-full">
+            <i class="fa-brands fa-discord"></i> Discord
+          </a>
+        </div>
+
+        <div class="team-card glass-panel reveal tilt-card">
+          <div class="team-avatar-frame">
+            <img src="images/qkaspqqqqq.jpg" alt="qkaspq Avatar" class="team-avatar" onerror="this.src='https://cdn.discordapp.com/embed/avatars/1.png'">
+            <div class="team-online-badge"></div>
+          </div>
+          <div class="team-role-pill">Script Developer</div>
+          <h3 class="team-name">qkaspq</h3>
+          <p class="team-bio">
+            Lead Luau & Reverse Engineering Developer creating high-performance game modules.
+          </p>
+          <div class="tech-stack-pills">
+            <span class="tech-pill">Luau</span>
+            <span class="tech-pill">Python</span>
+            <span class="tech-pill">JS</span>
+            <span class="tech-pill">C++</span>
+            <span class="tech-pill">C#</span>
+          </div>
+          <a href="https://discord.gg/dUXcJ6aW2B" target="_blank" class="btn btn-discord btn-full">
+            <i class="fa-brands fa-discord"></i> Discord
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="pricing">
+    <div class="container">
+      <div class="editorial-header reveal">
+        <h2 class="editorial-title">Pricing Options</h2>
+        <p class="editorial-subtitle">
+          Choose between our free key system or lifetime Premium Key access.
+        </p>
+      </div>
+
+      <div class="pricing-grid">
+        <div class="price-card glass-panel reveal tilt-card">
+          <div class="price-header">
+            <h3 class="price-title">Free Key</h3>
+            <div class="price-cost">$0<span class="period">/lifetime</span></div>
+          </div>
+          <ul class="price-features">
+            <li><i class="fa-solid fa-check"></i> Access to all available games</li>
+            <li><i class="fa-solid fa-xmark" style="color: #71717a;"></i> Obtain key every day</li>
+            <li><i class="fa-solid fa-xmark" style="color: #71717a;"></i> Standard Support</li>
+            <li><i class="fa-solid fa-xmark" style="color: #71717a;"></i> Standard script access</li>
+          </ul>
+          <a href="#loader" class="btn btn-secondary btn-full">
+            Get Free Key
+          </a>
+        </div>
+
+        <div class="price-card glass-panel featured reveal tilt-card">
+          <div class="featured-ribbon"><i class="fa-solid fa-crown"></i> RECOMMENDED</div>
+          <div class="price-header">
+            <h3 class="price-title">Premium Key</h3>
+            <div class="price-cost">$5.00<span class="period">/lifetime</span></div>
+          </div>
+          <ul class="price-features">
+            <li><i class="fa-solid fa-check"></i> <strong>No ads & lifetime keyless execution</strong></li>
+            <li><i class="fa-solid fa-check"></i> Premium role in Discord</li>
+            <li><i class="fa-solid fa-check"></i> Early access to scripts</li>
+          </ul>
+          <a href="https://discord.gg/dUXcJ6aW2B" target="_blank" class="btn btn-primary btn-full">
+            <i class="fa-solid fa-crown"></i> Purchase Premium Key
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="container">
+      <div class="editorial-header reveal">
+        <h2 class="editorial-title">Frequently Asked Questions</h2>
+        <p class="editorial-subtitle">
+          Everything you need to know about Casual Hub.
+        </p>
+      </div>
+
+      <div class="faq-luxury-wrapper glass-panel reveal tilt-card">
+        <div class="faq-accordion">
+          <div class="faq-item">
+            <button class="faq-question">
+              <span class="faq-num">01</span>
+              <span class="faq-q-text">Is Casual Hub safe and undetected?</span>
+              <div class="faq-toggle-icon"><i class="fa-solid fa-plus"></i></div>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Yes, the script is completely safe: it does not collect or interact with any of your personal data, and it remains 100% undetected across all supported games.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span class="faq-num">02</span>
+              <span class="faq-q-text">Which executors are supported?</span>
+              <div class="faq-toggle-icon"><i class="fa-solid fa-plus"></i></div>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Casual Hub supports all currently listed Roblox executors. Click below to view the full verified list.
+                <br>
+                <a href="#executors" class="btn btn-secondary btn-sm" style="margin-top: 14px; display: inline-flex; align-items: center; gap: 8px;">
+                  <i class="fa-solid fa-arrow-up"></i> View Supported Executors List
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span class="faq-num">03</span>
+              <span class="faq-q-text">How does the Free Key system work vs Premium Key?</span>
+              <div class="faq-toggle-icon"><i class="fa-solid fa-plus"></i></div>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Free Keys grant access via daily link checkpoints. Premium Keys ($5.00 lifetime) provide permanent keyless & ad-free access, a Premium Discord role, and early access to upcoming script updates.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span class="faq-num">04</span>
+              <span class="faq-q-text">How often are game modules updated?</span>
+              <div class="faq-toggle-icon"><i class="fa-solid fa-plus"></i></div>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                Our updates take no longer than 1 week—we constantly strive to patch, optimize, and add new script modules as frequently as possible.
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span class="faq-num">05</span>
+              <span class="faq-q-text">Where can I report bugs or request features?</span>
+              <div class="faq-toggle-icon"><i class="fa-solid fa-plus"></i></div>
+            </button>
+            <div class="faq-answer">
+              <div class="faq-answer-inner">
+                On our official Discord server, you can easily contact support, open direct tickets, or suggest new features: <a href="https://discord.gg/dUXcJ6aW2B" target="_blank">discord.gg/dUXcJ6aW2B</a>.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-glass-card glass-panel reveal tilt-card">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="#" class="logo">
+              <div class="logo-icon">
+                <img src="images/Max_a____.png" alt="Casual Hub Logo" class="logo-img">
+              </div>
+              <div class="logo-text">
+                Casual <span class="gradient-text">Hub</span>
+              </div>
+            </a>
+            <p class="footer-desc">
+              The pinnacle of Roblox Lua execution. Powering smooth, stealth, and high-performance script solutions worldwide.
+            </p>
+          </div>
+
+          <div class="footer-column">
+            <h4 class="footer-title">Navigation</h4>
+            <ul class="footer-links">
+              <li><a href="#about">About Hub</a></li>
+              <li><a href="#loader">Script Loader</a></li>
+              <li><a href="#games">Supported Games</a></li>
+              <li><a href="#team">Team & Devs</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4 class="footer-title">Community</h4>
+            <ul class="footer-links">
+              <li><a href="https://discord.gg/dUXcJ6aW2B" target="_blank">Discord Server</a></li>
+              <li><a href="#pricing">Premium Key</a></li>
+              <li><a href="#how-to-use">Setup Tutorial</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4 class="footer-title">Legal & Policies</h4>
+            <ul class="footer-links">
+              <li><a href="javascript:void(0)" onclick="openLegalModal('terms')">Terms of Service</a></li>
+              <li><a href="javascript:void(0)" onclick="openLegalModal('privacy')">Privacy Policy</a></li>
+              <li><a href="javascript:void(0)" onclick="openLegalModal('disclaimer')">Legal Disclaimer</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div class="copyright">
+            Casual Hub TM Corporation &copy; 2026. All rights reserved.
+          </div>
+          <div class="footer-socials">
+            <a href="https://discord.gg/dUXcJ6aW2B" target="_blank" aria-label="Discord" class="social-circle-btn"><i class="fa-brands fa-discord"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="modal-overlay" id="legalModalOverlay">
+    <div class="modal-card glass-panel">
+      <button class="modal-close" id="legalModalClose" aria-label="Close Modal">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <h3 class="modal-title" id="modalTitle">Legal Information</h3>
+      <div class="modal-body" id="modalBody">
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-container" id="toastContainer">
+    <div class="toast-card glass-panel">
+      <i class="fa-solid fa-circle-check toast-icon"></i>
+      <span class="toast-message" id="toastMessage">Script loader copied to clipboard!</span>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
