@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
   animateCursor();
 
-  const interactiveEls = document.querySelectorAll('a, button, .game-minimal-card, .executor-pill-card, .feature-luxury-card, .step-card, .team-card, .price-card, .faq-question');
+  const interactiveEls = document.querySelectorAll('a, button, .game-minimal-card, .catalog-card, .game-home-card, .exec-card, .executor-pill-card, .feature-luxury-card, .step-card, .team-card, .price-card, .faq-question');
   interactiveEls.forEach(el => {
     el.addEventListener('mouseenter', () => cursorOutline.classList.add('cursor-hover'));
     el.addEventListener('mouseleave', () => cursorOutline.classList.remove('cursor-hover'));
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   const canvas = document.getElementById('particles-canvas');
-  if (canvas) {
+  if (canvas && !document.body.classList.contains('page-games')) {
     const ctx = canvas.getContext('2d');
     let width = canvas.width = window.innerWidth;
     let height = canvas.height = window.innerHeight;
@@ -159,42 +159,119 @@ document.addEventListener('DOMContentLoaded', () => {
   tiltCards.forEach(card => {
     let currentX = 0, currentY = 0;
     let targetX = 0, targetY = 0;
-    let isHovered = false;
+    let rafId = 0;
 
-    card.addEventListener('mouseenter', () => {
-      isHovered = true;
-    });
+    const tick = () => {
+      currentX += (targetX - currentX) * 0.12;
+      currentY += (targetY - currentY) * 0.12;
+
+      if (Math.abs(currentX) > 0.05 || Math.abs(currentY) > 0.05) {
+        card.style.transform = `perspective(1000px) rotateX(${currentX.toFixed(2)}deg) rotateY(${currentY.toFixed(2)}deg)`;
+        rafId = requestAnimationFrame(tick);
+      } else {
+        card.style.transform = '';
+        rafId = 0;
+      }
+    };
+
+    const startTick = () => {
+      if (!rafId) rafId = requestAnimationFrame(tick);
+    };
 
     card.addEventListener('mousemove', (e) => {
       const rect = card.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-
-      targetX = ((y - centerY) / centerY) * -16;
-      targetY = ((x - centerX) / centerX) * 16;
+      targetX = ((y - rect.height / 2) / (rect.height / 2)) * -12;
+      targetY = ((x - rect.width / 2) / (rect.width / 2)) * 12;
+      startTick();
     });
 
     card.addEventListener('mouseleave', () => {
-      isHovered = false;
       targetX = 0;
       targetY = 0;
+      startTick();
+    });
+  });
+
+  const execStage = document.getElementById('execStage');
+  const execRing = document.getElementById('execRing');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (execStage && execRing && !reduceMotion) {
+    const cards = Array.from(execRing.querySelectorAll('.exec-card'));
+    const count = cards.length;
+    const step = 360 / count;
+    let radius = window.innerWidth < 768 ? 220 : (window.innerWidth < 1024 ? 300 : 380);
+    let rotation = 0;
+    let velocity = 0.18;
+    let dragging = false;
+    let lastX = 0;
+    let pitch = -8;
+    let targetPitch = -8;
+
+    const layoutCards = () => {
+      radius = window.innerWidth < 768 ? 220 : (window.innerWidth < 1024 ? 300 : 380);
+      cards.forEach((card, i) => {
+        card.style.transform = `rotateY(${i * step}deg) translateZ(${radius}px)`;
+      });
+    };
+
+    layoutCards();
+    window.addEventListener('resize', layoutCards);
+
+    execStage.addEventListener('pointerdown', (e) => {
+      dragging = true;
+      lastX = e.clientX;
+      execStage.setPointerCapture(e.pointerId);
     });
 
-    function updateTilt() {
-      currentX += (targetX - currentX) * 0.12;
-      currentY += (targetY - currentY) * 0.12;
+    execStage.addEventListener('pointermove', (e) => {
+      const rect = execStage.getBoundingClientRect();
+      const nx = (e.clientX - rect.left) / rect.width - 0.5;
+      const ny = (e.clientY - rect.top) / rect.height - 0.5;
+      targetPitch = -8 + ny * -10;
 
-      if (isHovered || Math.abs(currentX) > 0.05 || Math.abs(currentY) > 0.05) {
-        card.style.transform = `perspective(1000px) rotateX(${currentX.toFixed(2)}deg) rotateY(${currentY.toFixed(2)}deg)`;
-      } else if (!isHovered && Math.abs(currentX) <= 0.05 && Math.abs(currentY) <= 0.05) {
-        card.style.transform = '';
+      if (dragging) {
+        const dx = e.clientX - lastX;
+        lastX = e.clientX;
+        velocity = dx * 0.12;
+      } else {
+        velocity += nx * 0.012;
       }
-      requestAnimationFrame(updateTilt);
-    }
-    updateTilt();
-  });
+    });
+
+    const stopDrag = () => {
+      dragging = false;
+    };
+
+    execStage.addEventListener('pointerup', stopDrag);
+    execStage.addEventListener('pointercancel', stopDrag);
+    execStage.addEventListener('pointerleave', () => {
+      targetPitch = -8;
+    });
+
+    const tick = () => {
+      velocity *= dragging ? 0.92 : 0.985;
+      if (!dragging && Math.abs(velocity) < 0.12) {
+        velocity += 0.012;
+      }
+      rotation += velocity;
+      pitch += (targetPitch - pitch) * 0.08;
+
+      const wrapped = ((rotation % 360) + 360) % 360;
+      cards.forEach((card, i) => {
+        const angle = Math.abs(((i * step) + wrapped) % 360);
+        const front = angle < step / 2 || angle > 360 - step / 2;
+        card.classList.toggle('is-front', front);
+      });
+
+      execRing.style.transform = `translateY(-12px) rotateX(${pitch}deg) rotateY(${rotation}deg)`;
+      requestAnimationFrame(tick);
+    };
+
+    tick();
+  }
 
   let lastScrollY = window.scrollY;
   let scrollVelocity = 0;
@@ -240,6 +317,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     navLinks.forEach(link => {
+      if (document.body.classList.contains('page-games')) return;
       link.classList.remove('active');
       if (link.getAttribute('href') === `#${currentSection}`) {
         link.classList.add('active');
@@ -261,11 +339,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  const gridContainers = document.querySelectorAll('.games-minimal-grid, .executors-clean-list, .features-redesigned-grid, .steps-grid, .team-grid, .pricing-grid');
+  const gridContainers = document.querySelectorAll('.games-minimal-grid, .games-home-grid, .executors-clean-list, .features-redesigned-grid, .steps-grid, .team-grid, .pricing-grid');
   gridContainers.forEach(container => {
     const children = container.querySelectorAll('.reveal');
     children.forEach((child, index) => {
-      child.style.transitionDelay = `${index * 110}ms`;
+      child.style.transitionDelay = `${Math.min(index, 5) * 60}ms`;
     });
   });
 
@@ -274,11 +352,10 @@ document.addEventListener('DOMContentLoaded', () => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('active');
-      } else {
-        entry.target.classList.remove('active');
+        revealObserver.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.12, rootMargin: "0px 0px -20px 0px" });
+  }, { threshold: 0.08, rootMargin: "0px 0px -10px 0px" });
 
   revealElements.forEach(el => revealObserver.observe(el));
 
@@ -350,6 +427,54 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  const gameSearch = document.getElementById('gameSearch');
+  const gameFilters = document.getElementById('gameFilters');
+  const gamesGrid = document.getElementById('gamesGrid');
+  const gameCount = document.getElementById('gameCount');
+  const gamesEmpty = document.getElementById('gamesEmpty');
+
+  if (gamesGrid) {
+    const cards = Array.from(gamesGrid.querySelectorAll('.catalog-card'));
+    let activeFilter = 'all';
+
+    const applyGameFilter = () => {
+      const query = (gameSearch ? gameSearch.value : '').trim().toLowerCase();
+      let visible = 0;
+
+      cards.forEach(card => {
+        const status = card.getAttribute('data-status');
+        const name = card.getAttribute('data-name') || '';
+        const matchesFilter = activeFilter === 'all' || status === activeFilter;
+        const matchesSearch = !query || name.includes(query);
+        const show = matchesFilter && matchesSearch;
+        card.classList.toggle('is-hidden', !show);
+        if (show) visible += 1;
+      });
+
+      if (gameCount) {
+        gameCount.textContent = `${visible} title${visible === 1 ? '' : 's'}`;
+      }
+      if (gamesEmpty) {
+        gamesEmpty.classList.toggle('show', visible === 0);
+      }
+    };
+
+    if (gameFilters) {
+      gameFilters.querySelectorAll('.filter-chip').forEach(chip => {
+        chip.addEventListener('click', () => {
+          gameFilters.querySelectorAll('.filter-chip').forEach(other => other.classList.remove('active'));
+          chip.classList.add('active');
+          activeFilter = chip.getAttribute('data-filter');
+          applyGameFilter();
+        });
+      });
+    }
+
+    if (gameSearch) {
+      gameSearch.addEventListener('input', applyGameFilter);
+    }
+  }
+
   const copyModuleBtns = document.querySelectorAll('.copy-module-btn');
   copyModuleBtns.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -418,7 +543,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <p>By executing Casual Hub scripts or accessing our platform, you agree to these Terms of Service. Casual Hub provides high-performance Lua script loaders for Roblox titles strictly for personal entertainment and testing purposes.</p>
         
         <h4>2. Key System & Access Tiers</h4>
-        <p>Free Keys are valid for 24 hours and acquired through official link checkpoints. Premium Keys ($5.00 lifetime) provide permanent keyless execution, zero ads, Premium Discord role, and early access to new script builds. Reselling, sharing, or attempting to crack key access will result in an immediate blacklisting of your key.</p>
+        <p>Basic Access unlocks every live script in the hub. Terms are 1 day ($1), 7 days ($3), and lifetime ($6). There is no free plan. Reselling, sharing, or attempting to crack key access will result in an immediate blacklisting of your key.</p>
         
         <h4>3. Cloud Service Uptime</h4>
         <p>Our server infrastructure operates 24/7 cloud sync. During major Roblox platform engine updates, script execution may be temporarily paused for hotfix deployment to guarantee stealth protection.</p>
