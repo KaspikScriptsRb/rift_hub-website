@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Supported Games | Casual Hub</title>
+  <meta name="description" content="Browse every Casual Hub game module — live scripts and upcoming titles.">
+  <link rel="icon" type="image/png" href="images/Max_a____.png">
+  <link rel="apple-touch-icon" href="images/Max_a____.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-games">
+
+  <div class="scroll-progress-bar" id="scrollProgress"></div>
+
+  <div class="ambient-spotlight spotlight-1" id="spotlight1"></div>
+  <div class="ambient-spotlight spotlight-2" id="spotlight2"></div>
+
+  <header class="header" id="header">
+    <div class="nav-island">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">
+          <img src="images/Max_a____.png" alt="Casual Hub Logo" class="logo-img">
+        </div>
+        <div class="logo-text">
+          Casual <span class="gradient-text">Hub</span>
+        </div>
+      </a>
+
+      <nav class="nav-menu">
+        <ul class="nav-links">
+          <li><a href="index.html#about" class="nav-link">About</a></li>
+          <li><a href="index.html#loader" class="nav-link">Script Loader</a></li>
+          <li><a href="games.html" class="nav-link active">Supported Games</a></li>
+          <li><a href="index.html#executors" class="nav-link">Executors</a></li>
+          <li><a href="index.html#features" class="nav-link">Features</a></li>
+          <li><a href="index.html#how-to-use" class="nav-link">Tutorial</a></li>
+          <li><a href="index.html#team" class="nav-link">Devs</a></li>
+          <li><a href="index.html#pricing" class="nav-link">Pricing</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="https://discord.gg/dUXcJ6aW2B" target="_blank" class="btn btn-discord btn-sm">
+          <i class="fa-brands fa-discord"></i>
+          <span>Discord</span>
+        </a>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation Menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <section class="games-catalog" id="catalog">
+    <div class="container">
+      <div class="catalog-hero reveal">
+        <p class="catalog-kicker">Casual Hub library</p>
+        <h1 class="editorial-title">Supported Games</h1>
+        <p class="editorial-subtitle">
+          Every module in one place. Filter live scripts or upcoming drops — one Basic Access key unlocks the full live library.
+        </p>
+      </div>
+
+      <div class="catalog-toolbar glass-panel reveal">
+        <div class="catalog-search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="search" id="gameSearch" placeholder="Search games..." autocomplete="off">
+        </div>
+        <div class="catalog-filters" id="gameFilters">
+          <button class="filter-chip active" data-filter="all">All</button>
+          <button class="filter-chip" data-filter="live">Live</button>
+          <button class="filter-chip" data-filter="upcoming">Upcoming</button>
+        </div>
+        <div class="catalog-count" id="gameCount">13 titles</div>
+      </div>
+
+      <div class="games-catalog-grid" id="gamesGrid">
+        <article class="catalog-card glass-panel copy-module-btn" data-module="Grow a Garden 2" data-status="live" data-name="grow a garden 2">
+          <div class="catalog-media">
+            <img fetchpriority="high" decoding="async" src="images/i (9).png" alt="Grow a Garden 2">
+            <div class="catalog-shade"></div>
+            <div class="game-copy-indicator"><i class="fa-regular fa-copy"></i> <span>Copy loader</span></div>
+          </div>
+          <div class="catalog-meta">
+            <h3>Grow a Garden 2</h3>
+          </div>
+        </article>
+
+        <article class="catalog-card glass-panel copy-module-btn" data-module="Violence District" data-status="live" data-name="violence district">
+          <div class="catalog-media">
+            <img fetchpriority="high" decoding="async" src="images/i (8).png" alt="Violence District">
+            <div class="catalog-shade"></div>
+            <div class="game-copy-indicator"><i class="fa-regular fa-copy"></i> <span>Copy loader</span></div>
+          </div>
+          <div class="catalog-meta">
+            <h3>Violence District</h3>
+          </div>
+        </article>
+
+        <article class="catalog-card glass-panel copy-module-btn" data-module="Notoriety" data-status="live" data-name="notoriety">
+          <div class="catalog-media">
+            <img decoding="async" src="images/i 10.png" alt="Notoriety">
+            <div class="catalog-shade"></div>
+            <div class="game-copy-indicator"><i class="fa-regular fa-copy"></i> <span>Copy loader</span></div>
+          </div>
+          <div class="catalog-meta">
+            <h3>Notoriety</h3>
+          </div>
+        </article>
+
+        <article class="catalog-card glass-panel copy-module-btn" data-module="Flick" data-status="live" data-name="flick">
+          <div class="catalog-media">
+            <img decoding="async" src="images/i 11.png" alt="Flick">
+            <div class="catalog-shade"></div>
+            <div class="game-copy-indicator"><i class="fa-regular fa-copy"></i> <span>Copy loader</span></div>
+          </div>
+          <div class="catalog-meta">
+            <h3>Flick</h3>
+          </div>
+        </article>
+
+        <article class="catalog-card glass-panel copy-module-btn" data-module="Make an Army" data-status="live" data-name="make an army">
+          <div class="catalog-media">
+            <img loading="lazy" decoding="async" src="images/noFilter (12e13).jpg" alt="Make an Army">
+            <div class="catalog-shade"></div>
+            <div class="game-copy-indicator"><i class="fa-regular fa-copy"></i> <span>Copy loader</span></div>
+          </div>
+          <div class="catalog-meta">
+            <h3>Make an Army</h3>
+          </div>
+        </article>
+
+        <article class="catalog-card glass-panel copy-module-btn" data-module="Fall for Brainrots!" data-status="live" data-name="fall for brainrots">
+          <div class="catalog-media">
+            <img loading="lazy" decoding="async" src="images/fsfsalfkafddfj242.jpg" alt="Fall for Brainrots!">
+            <div class="catalog-shade"></div>
+            <div class="game-copy-indicator"><i class="fa-regular fa-copy"></i> <span>Copy loader</span></div>
+          </div>
+          <div class="catalog-meta">
+            <h3>Fall for Brainrots!</h3>
+          </div>
+        </article>
+
+        <article class="catalog-card glass-panel copy-module-btn" data-module="BloxStrike" data-status="live" data-name="bloxstrike">
+          <div class="catalog-media">
+            <img loading="lazy" decoding="async" src="images/noFilter (9144).jpg" alt="BloxStrike">
+            <div class="catalog-shade"></div>
+            <div class="game-copy-indicator"><i class="fa-regular fa-copy"></i> <span>Copy loader</span></div>
+          </div>
+          <div class="catalog-meta">
+            <h3>BloxStrike</h3>
+          </div>
+        </article>
+
+        <article class="catalog-card glass-panel copy-module-btn" data-module="Chicken Farm" data-status="live" data-name="chicken farm">
+          <div class="catalog-media">
+            <img loading="lazy" decoding="async" src="images/noFilter 1324124.jpg" alt="Chicken Farm">
+            <div class="catalog-shade"></div>
+            <div class="game-copy-indicator"><i class="fa-regular fa-copy"></i> <span>Copy loader</span></div>
+          </div>
+          <div class="catalog-meta">
+            <h3>Chicken Farm</h3>
+          </div>
+        </article>
+
+        <article class="catalog-card glass-panel copy-module-btn" data-module="No Limit Lifting Simulator 2" data-status="live" data-name="no limit lifting simulator 2">
+          <div class="catalog-media">
+            <img loading="lazy" decoding="async" src="images/noFilter (123249).jpg" alt="No Limit Lifting Simulator 2">
+            <div class="catalog-shade"></div>
+            <div class="game-copy-indicator"><i class="fa-regular fa-copy"></i> <span>Copy loader</span></div>
+          </div>
+          <div class="catalog-meta">
+            <h3>No Limit Lifting Simulator 2</h3>
+          </div>
+        </article>
+
+        <article class="catalog-card glass-panel copy-module-btn" data-module="Rivals" data-status="live" data-name="rivals">
+          <div class="catalog-media">
+            <img loading="lazy" decoding="async" src="images/noFilter (9)rivals.jpg" alt="Rivals">
+            <div class="catalog-shade"></div>
+            <div class="game-copy-indicator"><i class="fa-regular fa-copy"></i> <span>Copy loader</span></div>
+          </div>
+          <div class="catalog-meta">
+            <h3>Rivals</h3>
+          </div>
+        </article>
+
+        <article class="catalog-card glass-panel copy-module-btn" data-module="Tsum" data-status="live" data-name="tsum">
+          <div class="catalog-media">
+            <img loading="lazy" decoding="async" src="images/tsum.jpg" alt="Tsum">
+            <div class="catalog-shade"></div>
+            <div class="game-copy-indicator"><i class="fa-regular fa-copy"></i> <span>Copy loader</span></div>
+          </div>
+          <div class="catalog-meta">
+            <h3>Tsum</h3>
+          </div>
+        </article>
+
+        <article class="catalog-card glass-panel copy-module-btn" data-module="SCP retroBreach" data-status="live" data-name="scp retrobreach">
+          <div class="catalog-media">
+            <img loading="lazy" decoding="async" src="images/scp.jpg" alt="SCP retroBreach">
+            <div class="catalog-shade"></div>
+            <div class="game-copy-indicator"><i class="fa-regular fa-copy"></i> <span>Copy loader</span></div>
+          </div>
+          <div class="catalog-meta">
+            <h3>SCP retroBreach</h3>
+          </div>
+        </article>
+
+        <article class="catalog-card catalog-card-upcoming glass-panel" data-status="upcoming" data-name="blox fruits">
+          <div class="catalog-media">
+            <img loading="lazy" decoding="async" src="images/bf.jpg" alt="Blox Fruits">
+            <div class="catalog-shade"></div>
+          </div>
+          <div class="catalog-meta">
+            <h3>Blox Fruits</h3>
+          </div>
+        </article>
+      </div>
+
+      <p class="catalog-empty" id="gamesEmpty">No games match your search.</p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-glass-card glass-panel reveal tilt-card">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <a href="index.html" class="logo">
+              <div class="logo-icon">
+                <img loading="lazy" decoding="async" src="images/Max_a____.png" alt="Casual Hub Logo" class="logo-img">
+              </div>
+              <div class="logo-text">
+                Casual <span class="gradient-text">Hub</span>
+              </div>
+            </a>
+            <p class="footer-desc">
+              The pinnacle of Roblox Lua execution. Powering smooth, stealth, and high-performance script solutions worldwide.
+            </p>
+          </div>
+
+          <div class="footer-column">
+            <h4 class="footer-title">Navigation</h4>
+            <ul class="footer-links">
+              <li><a href="index.html#about">About Hub</a></li>
+              <li><a href="index.html#loader">Script Loader</a></li>
+              <li><a href="games.html">Supported Games</a></li>
+              <li><a href="index.html#team">Team & Devs</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4 class="footer-title">Community</h4>
+            <ul class="footer-links">
+              <li><a href="https://discord.gg/dUXcJ6aW2B" target="_blank">Discord Server</a></li>
+              <li><a href="index.html#pricing">Basic Access</a></li>
+              <li><a href="index.html#how-to-use">Setup Tutorial</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h4 class="footer-title">Legal & Policies</h4>
+            <ul class="footer-links">
+              <li><a href="javascript:void(0)" onclick="openLegalModal('terms')">Terms of Service</a></li>
+              <li><a href="javascript:void(0)" onclick="openLegalModal('privacy')">Privacy Policy</a></li>
+              <li><a href="javascript:void(0)" onclick="openLegalModal('disclaimer')">Legal Disclaimer</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <div class="copyright">
+            Casual Hub TM Corporation &copy; 2026. All rights reserved.
+          </div>
+          <div class="footer-socials">
+            <a href="https://discord.gg/dUXcJ6aW2B" target="_blank" aria-label="Discord" class="social-circle-btn"><i class="fa-brands fa-discord"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="modal-overlay" id="legalModalOverlay">
+    <div class="modal-card glass-panel">
+      <button class="modal-close" id="legalModalClose" aria-label="Close Modal">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <h3 class="modal-title" id="modalTitle">Legal Information</h3>
+      <div class="modal-body" id="modalBody"></div>
+    </div>
+  </div>
+
+  <div class="toast-container" id="toastContainer">
+    <div class="toast-card glass-panel">
+      <i class="fa-solid fa-circle-check toast-icon"></i>
+      <span class="toast-message" id="toastMessage">Script loader copied to clipboard!</span>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
