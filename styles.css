@@ -1052,6 +1052,11 @@ section {
   margin: 0 auto;
 }
 
+.team-grid.team-single {
+  grid-template-columns: 1fr;
+  max-width: 480px;
+}
+
 .team-card {
   padding: 44px 36px;
   text-align: center;
@@ -1143,6 +1148,11 @@ section {
   gap: 32px;
   max-width: 920px;
   margin: 0 auto;
+}
+
+.single-pricing-grid {
+  grid-template-columns: 1fr;
+  max-width: 440px;
 }
 
 .duration-grid {
