@@ -397,7 +397,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const copyScriptBtn = document.getElementById('copyScriptBtn');
   if (copyScriptBtn) {
     copyScriptBtn.addEventListener('click', () => {
-      copyToClipboard(defaultScriptText, "Casual Hub Loader copied to clipboard!");
+      copyToClipboard(defaultScriptText, "Rift Hub Loader copied to clipboard!");
 
       const btnText = copyScriptBtn.querySelector('.btn-copy-text');
       const icon = copyScriptBtn.querySelector('i');
@@ -418,7 +418,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (step1CopyBtn) {
     step1CopyBtn.addEventListener('click', (e) => {
       e.stopPropagation();
-      copyToClipboard(defaultScriptText, "Casual Hub Loader copied to clipboard!");
+      copyToClipboard(defaultScriptText, "Rift Hub Loader copied to clipboard!");
       const originalText = step1CopyBtn.innerHTML;
       step1CopyBtn.innerHTML = `<i class="fa-solid fa-check"></i> Copied!`;
       setTimeout(() => {
@@ -539,40 +539,38 @@ document.addEventListener('DOMContentLoaded', () => {
     terms: {
       title: "Terms of Service",
       body: `
-        <h4>1. Usage License & Scope</h4>
-        <p>By executing Casual Hub scripts or accessing our platform, you agree to these Terms of Service. Casual Hub provides high-performance Lua script loaders for Roblox titles strictly for personal entertainment and testing purposes.</p>
+        <h4>1. Usage</h4>
+        <p>By executing Rift Hub scripts, you use them for personal entertainment and testing purposes.</p>
         
-        <h4>2. Key System & Access Tiers</h4>
-        <p>Basic Access unlocks every live script in the hub. Terms are 1 day ($1), 7 days ($3), and lifetime ($6). There is no free plan. Reselling, sharing, or attempting to crack key access will result in an immediate blacklisting of your key.</p>
-        
-        <h4>3. Cloud Service Uptime</h4>
-        <p>Our server infrastructure operates 24/7 cloud sync. During major Roblox platform engine updates, script execution may be temporarily paused for hotfix deployment to guarantee stealth protection.</p>
+        <h4>2. Access</h4>
+        <p>Rift Hub is provided free of charge.</p>
       `
     },
     privacy: {
       title: "Privacy Policy",
       body: `
-        <h4>1. Complete Privacy Protection</h4>
-        <p>Casual Hub values your privacy. We do NOT collect, store, or sell any personal data, passwords, real names, or IP tracking databases.</p>
-        
-        <h4>2. Local Configuration Storage</h4>
-        <p>Your custom script settings, draggable UI layouts, and saved game configurations are stored locally on your device in your executor's workspace folder (e.g. <code>casual_hub_config.json</code>).</p>
-        
-        <h4>3. Community Data & Discord</h4>
-        <p>Joining our official Discord community is completely voluntary. Support tickets and key verifications are processed strictly through authorized Discord bots without exposing private credentials.</p>
+        <h4>1. Privacy</h4>
+        <p>Rift Hub does not collect or store your personal data.</p>
       `
     },
     disclaimer: {
       title: "Legal Disclaimer",
       body: `
-        <h4>1. Independent Development</h4>
-        <p>Casual Hub is an independent developer project and is NOT affiliated with, sponsored by, or endorsed by Roblox Corporation or game creators.</p>
+        <h4>1. Independent Project</h4>
+        <p>Rift Hub is an independent project and is not affiliated with Roblox Corporation or any game creators.</p>
         
-        <h4>2. User Discretion & Safety</h4>
-        <p>While Casual Hub incorporates advanced anti-tamper hooks and stealth execution to protect user accounts, third-party script execution is used at your own discretion and risk.</p>
+        <h4>2. Trademarks</h4>
+        <p>All game titles and trademarks belong to their respective owners.</p>
+      `
+    },
+    authorship: {
+      title: "Script Authorship Notice",
+      body: `
+        <h4>1. Statement on Original Authorship</h4>
+        <p>Killert unfairly and dishonestly appropriated my scripts after I explicitly revoked permission and prohibited their use. More than half of the scripts found in Casual Hub are my original intellectual work and code creations.</p>
         
-        <h4>3. Intellectual Property</h4>
-        <p>All game titles, trademarks, cover art, and brand names mentioned on this site belong to their respective copyright holders.</p>
+        <h4>2. Authentic Source</h4>
+        <p>Rift Hub is the authentic project maintained directly by the original author (qkaspq).</p>
       `
     }
   };
