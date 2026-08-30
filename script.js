@@ -383,7 +383,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  const defaultScriptText = `loadstring(game:HttpGet("https://api.jnkie.com/api/v1/luascripts/public/056bf72c3cd7af38ca292db583aaba9ecd12205d214716e14654ee7781bfee23/download"))()`;
+  const defaultScriptText = `loadstring(game:HttpGet("https://api.jnkie.com/api/v1/luascripts/public/d4e7393e9dce7f3d4cf5c364167fc8d7cf2df4e5bf9ad9bb4dcf2ad2804c8422/download"))()`;
 
   function copyToClipboard(text, message) {
     navigator.clipboard.writeText(text).then(() => {
@@ -477,7 +477,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const copyModuleBtns = document.querySelectorAll('.copy-module-btn');
   copyModuleBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', (e) => {
+      if (btn.hasAttribute('data-changelog')) {
+        return;
+      }
       const moduleName = btn.getAttribute('data-module');
       copyToClipboard(defaultScriptText, `${moduleName} script loader copied!`);
 
@@ -597,4 +600,131 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  
+  const changelogModalOverlay = document.getElementById('changelogModalOverlay');
+  const changelogModalClose = document.getElementById('changelogModalClose');
+  const changelogCopyBtn = document.getElementById('changelogCopyBtn');
+  const changelogCard = document.querySelector('.changelog-modal-card');
+
+  function openChangelogModal() {
+    if (changelogModalOverlay) {
+      changelogModalOverlay.classList.add('active');
+      if (changelogCard) changelogCard.style.transform = '';
+    }
+  }
+
+  function closeChangelogModal() {
+    if (changelogModalOverlay) {
+      changelogModalOverlay.classList.remove('active');
+      if (changelogCard) changelogCard.style.transform = '';
+    }
+  }
+
+  document.querySelectorAll('[data-changelog]').forEach(card => {
+    card.addEventListener('click', (e) => {
+      e.preventDefault();
+      openChangelogModal();
+    });
+  });
+
+  if (changelogModalClose) {
+    changelogModalClose.addEventListener('click', closeChangelogModal);
+  }
+
+  if (changelogModalOverlay) {
+    changelogModalOverlay.addEventListener('click', (e) => {
+      if (e.target === changelogModalOverlay) {
+        closeChangelogModal();
+      }
+    });
+
+    if (changelogCard) {
+      let modalCurRotX = 0, modalCurRotY = 0;
+      let modalTargetRotX = 0, modalTargetRotY = 0;
+      let modalCurTransX = 0, modalCurTransY = 0;
+      let modalTargetTransX = 0, modalTargetTransY = 0;
+      let modalRafId = 0;
+
+      const modalTick = () => {
+        modalCurRotX += (modalTargetRotX - modalCurRotX) * 0.12;
+        modalCurRotY += (modalTargetRotY - modalCurRotY) * 0.12;
+        modalCurTransX += (modalTargetTransX - modalCurTransX) * 0.12;
+        modalCurTransY += (modalTargetTransY - modalCurTransY) * 0.12;
+
+        const isStillMoving =
+          Math.abs(modalTargetRotX - modalCurRotX) > 0.01 ||
+          Math.abs(modalTargetRotY - modalCurRotY) > 0.01 ||
+          Math.abs(modalTargetTransX - modalCurTransX) > 0.02 ||
+          Math.abs(modalTargetTransY - modalCurTransY) > 0.02;
+
+        if (isStillMoving) {
+          changelogCard.style.transform = `perspective(1000px) rotateX(${modalCurRotX.toFixed(2)}deg) rotateY(${modalCurRotY.toFixed(2)}deg) translate3d(${modalCurTransX.toFixed(1)}px, ${modalCurTransY.toFixed(1)}px, 0)`;
+          modalRafId = requestAnimationFrame(modalTick);
+        } else {
+          if (modalTargetRotX === 0 && modalTargetRotY === 0 && modalTargetTransX === 0 && modalTargetTransY === 0) {
+            changelogCard.style.transform = '';
+            modalRafId = 0;
+          } else {
+            changelogCard.style.transform = `perspective(1000px) rotateX(${modalCurRotX.toFixed(2)}deg) rotateY(${modalCurRotY.toFixed(2)}deg) translate3d(${modalCurTransX.toFixed(1)}px, ${modalCurTransY.toFixed(1)}px, 0)`;
+            modalRafId = requestAnimationFrame(modalTick);
+          }
+        }
+      };
+
+      const startModalTick = () => {
+        if (!modalRafId) modalRafId = requestAnimationFrame(modalTick);
+      };
+
+      changelogModalOverlay.addEventListener('mousemove', (e) => {
+        if (!changelogModalOverlay.classList.contains('active')) return;
+        const rect = changelogCard.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+
+        const normX = (e.clientX - centerX) / (rect.width / 2);
+        const normY = (e.clientY - centerY) / (rect.height / 2);
+
+        modalTargetRotX = Math.max(-7, Math.min(7, normY * -7));
+        modalTargetRotY = Math.max(-7, Math.min(7, normX * 7));
+        modalTargetTransX = Math.max(-10, Math.min(10, normX * 7));
+        modalTargetTransY = Math.max(-10, Math.min(10, normY * 7));
+
+        startModalTick();
+      });
+
+      changelogModalOverlay.addEventListener('mouseleave', () => {
+        modalTargetRotX = 0;
+        modalTargetRotY = 0;
+        modalTargetTransX = 0;
+        modalTargetTransY = 0;
+        startModalTick();
+      });
+    }
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      if (legalModalOverlay) legalModalOverlay.classList.remove('active');
+      closeChangelogModal();
+    }
+  });
+
+  if (changelogCopyBtn) {
+    changelogCopyBtn.addEventListener('click', () => {
+      copyToClipboard(defaultScriptText, "Grow a Garden 2 script loader copied!");
+      const btnText = changelogCopyBtn.querySelector('span');
+      const icon = changelogCopyBtn.querySelector('i');
+      if (btnText && icon) {
+        const origText = btnText.textContent;
+        btnText.textContent = "Copied Loader!";
+        icon.className = "fa-solid fa-check";
+        setTimeout(() => {
+          btnText.textContent = origText;
+          icon.className = "fa-solid fa-code";
+        }, 2500);
+      }
+    });
+  }
+
 });
+
